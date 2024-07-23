@@ -21,6 +21,9 @@ class Favorites(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(80))
     user_id = Column(Integer, ForeignKey('user.id'))
+    character_id = Column(Integer, ForeignKey('character.id'))
+    planet_id = Column(Integer, ForeignKey('planet.id'))
+    vehicle_id = Column(Integer, ForeignKey('vehicle.id'))
 
 class Character(Base):
     __tablename__ = 'character'
@@ -28,7 +31,6 @@ class Character(Base):
     name = Column(String(80))
     gender = Column(String(40))
     eye = Column(String(20))
-    favorites_id = Column(Integer, ForeignKey('favorites.id'))
 
 class Planet(Base):
     __tablename__ = 'planet'
@@ -36,7 +38,6 @@ class Planet(Base):
     name = Column(String(80))
     population = Column(Integer)
     eye = Column(String(20))
-    favorites_id = Column(Integer, ForeignKey('favorites.id'))
 
 class Vehicle(Base):
     __tablename__ = 'vehicle'
@@ -44,7 +45,6 @@ class Vehicle(Base):
     name = Column(String(80))
     model = Column(String(40))
     size = Column(Integer)
-    favorites_id = Column(Integer, ForeignKey('favorites.id'))
 
     def to_dict(self):
         return {}
